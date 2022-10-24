@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<p><h4><span style="font-size: 16px;font-family:나눔고딕"><strong>[모니터링 대상 전체 경기 목록]</strong></span></h4></p>
+
+<table style="width: 100%; border-collapse: collapse; border-top: 1px;text-align:center; border-bottom : 1px;font-size: 13px;font-family:나눔고딕">
+    <thead>
+        <tr style = "background-color :#ebdee4;font-weight: bold">
+            <td style="margin:auto;text-align:center;border: 1px solid">경기번호</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">경기 ID</td>
+            <td style="margin:auto;text-align:center; border: 1px solid">경기 시작(GMT +0)</td>
+            <td style="margin:auto;text-align:center; border: 1px solid">리그명</td>
+            <td style="margin:auto;text-align:center; border: 1px solid">스포츠명</td>
+            <td style="margin:auto;text-align:center; border: 1px solid">홈팀</td>
+            <td style="margin:auto;text-align:center; border: 1px solid">어웨이팀</td>
+            <td style="margin:auto;text-align:center; border: 1px solid;">경기 종료(GMT +0)</td>
+            <td style="margin:auto;text-align:center; border: 1px solid;">에러 여부</td>
+            <td style="margin:auto;text-align:center;border: 1px solid;">에러 푸쉬수/총 푸쉬수</td>
+            <td style="margin:auto;text-align:center;border: 1px solid;">에러 타입(에러 수)</td>
+           </tr> 
+    </thead>
+
+    <tbody style =  "border-collapse: collapse; border: 1px solid;">
+        {% for game in game_list -%}
+        <style>
+            .red {
+                font-style :bold;
+                font-size :14px;
+                font-family:나눔고딕;
+                border : 1px solid;
+                background-color: rgb(250, 158, 173);
+
+            }
+            .black {
+                border : 1px solid;
+                font-family:나눔고딕;
+                background-color :#ebdee4;
+            }
+        </style>
+       <tr >
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}">{{game.num}}</td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}"> {{game.id}} </td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}"> {{game.s_time}}</td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}">{{game.league}}</td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}">{{game.sport}}</td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}">{{game.home}}</td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}">{{game.away}}</td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}">{{game.e_time}}</td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}">{{game.is_err}}</td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}">{{game.err_push}}</td>
+        <td class="{{'red' if game.is_err == '에러' else 'black'}}">{{game.err_type}}</td>
+       </tr> 
+    {% endfor %}
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+
+</html>

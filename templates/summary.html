@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<h4 style="line-height: 1.15;"><strong><span style='font-size: 18px; font-family:나눔고딕'>[Summary]</span></strong></h4>
+<p><span style="font-family: 나눔고딕"><span style="font-size: 16px;">
+    *모니터링 대상 경기 범위 : &nbsp;{{summary.start.year}}년 {{summary.start.month}}월 {{summary.start.day}}일 0시 ~ {{summary.end.year}}년 {{summary.end.month}}월 {{summary.end.day}}일 24시 종료 경기(GMT+0 기준)</span></span></p>
+<p><span style="font-family: 나눔고딕"><span style="font-size: 15px;">&nbsp;1) 대상 리그 및 각 리그별 경기 수</span></span></p>
+{% for league in leagues -%}
+<p><span style="font-family:나눔고딕"><span style="font-size: 15px;">&nbsp;&nbsp;&nbsp;({{loop.index}}) {{league}} ({{sports[league]}}) : {{leagues[league]}}건</span></span></p>
+{% endfor %}
+<p><span style="font-family:나눔고딕"><span style="font-size: 15px;">&nbsp;2) 대상 총 경기 중 에러 경기 수 : {{summary.error_game}}/{{summary.total_game}}&nbsp;</span></span></p>
+<p><span style="font-family: 나눔고딕"><span style="font-size: 15px;">&nbsp;3) 대상 총 푸쉬 대비 에러 푸쉬 수 : {{summary.error_push}}/{{summary.total_push}}</span></span></p>
+{%- if error_type is not none   -%}
+
+<p><span style='font-size: 15px; font-family:나눔고딕'>&nbsp;4) 검출 에러 타입 및 에러 수</span></p>
+{% for type in error_type -%}
+<p><span style="font-size: 15px;font-family:나눔고딕">&nbsp; &nbsp; &nbsp; &nbsp;({{loop.index}}) &nbsp;{{type}} : {{error_type[type]}}</span></p>
+{% endfor %}
+{% endif %}
+
+</html>

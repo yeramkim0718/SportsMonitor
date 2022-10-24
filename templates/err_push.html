@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<p><span style="font-size: 16px;font-family:나눔고딕"><strong>({{game.league}}) {{game.home}} vs {{game.away}} 경기 (경기번호 {{game.num}}: , 경기 ID : {{game.id}}) 에러 푸쉬 데이터 및 오류 내용</strong></span></p>
+
+<table style=" border-collapse: collapse; border: 1px solid;font-size: 13px;font-family:나눔고딕;background-color :#ebdee4;padding-left: 5px; padding_right:5px">    
+    <thead>
+        <tr style = "font-weight: bold">
+            <td style="margin:auto;text-align:center;border: 1px solid"></td>
+            <td style="margin:auto;text-align:center;border: 1px solid">PUSH 번호</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">ERROR 메세지</td>
+            </tr>
+            </thead>
+    <tbody>
+        {% for err in errs -%}
+       <tr>
+        <td style="border: 1px solid;font-family:나눔고딕">{{loop.index}}</td>
+        <td style="border: 1px solid;font-family:나눔고딕">{{err.num}}</td>
+        <td style=" border: 1px solid;font-family:나눔고딕">{{err.msg}}</td>
+       </tr> 
+    {% endfor %}
+    </tbody>
+</table>
+
+<p><span style="font-size: 16px;font-family:나눔고딕"><strong>({{game.league}}) {{game.home}} vs {{game.away}} 경기 (경기번호 {{game.num}}: , 경기 ID : {{game.id}}) 전체 푸쉬 데이터</strong></span></p>
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid;font-size: 13px;font-family:나눔고딕">
+    <thead >
+        <tr style = "background-color :#ebdee4; font-weight: bold ">
+            <td style="margin:auto;text-align:center;border: 1px solid">PUSH 번호</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">경기 ID</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">경기 시작(GMT +0)</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">리그명</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">스포츠명</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">홈팀</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">어웨이팀</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">로그 시간(GMT +0)</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">STATUS</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">STATE</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">점수(AWAY팀 : HOME팀)</td>
+            <td style="margin:auto;text-align:center;border: 1px solid">EXTRA SCORE 여부 </td>
+            <td style="margin:auto;text-align:center;border: 1px solid">EXTRA SCORE(승부차기 점수)</td>
+            </tr>
+            </thead>
+    <tbody>
+        {% for push in pushes -%}
+        <style>
+            .red {
+                font-style :bold;
+                font-size :14px;
+                font-family:나눔고딕;
+                border : 1px solid;
+                background-color: rgb(250, 158, 173);
+
+            }
+            .black {
+                border : 1px solid;
+                font-family:나눔고딕;
+                background-color :#ebdee4;
+            }
+        </style>
+       <tr>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{loop.index}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.id}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.s_time}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.league}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.sport}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.home}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.away}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.log_time}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.status}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.state}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.scores}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.extra_score_flag}}</td>
+        <td class="{{'red' if push.errPush == True else 'black'}}">{{push.extra_scores}}</td>
+   
+    </tr> 
+    {% endfor %}
+    </tbody>
+</table>
+<p><br></p><p><br></p>
+</html>

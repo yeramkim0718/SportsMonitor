@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<p><span style="font-size: 16px;font-family:나눔고딕"><strong>[에러 타입 의미]</strong></span></p>
+<table style="width: 80%; border-collapse: collapse; border: 1px solid;font-size: 13px;font-family:나눔고딕;background-color :#ebdee4">
+    <thead>
+        <tr style = "font-weight: bold">
+            <td style="margin:auto;text-align:center;border: 1px solid">에러 타입</td>
+            <td style="margin:auto;text-align:center; border: 1px solid">에러 메세지</td>
+           </tr> 
+    </thead>
+
+    <tbody>
+        {% for map in map_list -%}
+       <tr>
+        <td style="border: 1px solid;font-family:나눔고딕">{{map.type}}</td>
+        <td style="border: 1px solid;font-family:나눔고딕">{{map.msg}}</td>
+       </tr> 
+    {% endfor %}
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+</html>
