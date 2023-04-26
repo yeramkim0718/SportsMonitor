@@ -2,7 +2,9 @@
 
 스포츠 알람 모니터링 프로젝트 
 
-각 종목의 특징 및 데이터의 형식이 맞지 않은 DB 내 데이터를 체크하여 매일 E-mail로 확인 메일 보냄. 
+PUSH 데이터를 확인하여 각 종목별 데이터의 공통규칙을 찾아내어 잘못된 데이터 PUSH 체크하여 메일로 보내기. 
+
+
 
 [error_msg]
 common1 = BEFORE_MATCH(맨 처음으로 오는 push)의 status가 BEFORE_MATCH가 아닙니다.
